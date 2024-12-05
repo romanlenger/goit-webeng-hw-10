@@ -5,7 +5,6 @@ from pymongo import MongoClient
 
 from .utils import get_mongodb
 from .forms import QuoteForm
-from .models import Author
 
 client = MongoClient("mongodb://localhost")
 db = client.HW_10
@@ -27,7 +26,7 @@ def add_quote(request):
         author_f = request.POST['author']
         quote = request.POST['quote']
         tags = request.POST['tags']
-        
+
         if db.authors.find_one({'fullname' : author_f}):
             db.quotes.insert_one({
                 'author' : author_f,

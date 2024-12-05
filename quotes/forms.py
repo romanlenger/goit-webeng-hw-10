@@ -1,10 +1,10 @@
 from django import forms
 
-from .models import Quote
+from .models import Quote, Author
 
 
 class QuoteForm(forms.ModelForm):
-    author = forms.CharField(required=False, label='Вкажіть існуючого автора')
+    author = forms.ModelChoiceField(queryset=Author.objects.all(), empty_label="Виберіть автора", required=True)
 
     class Meta:
         model = Quote
