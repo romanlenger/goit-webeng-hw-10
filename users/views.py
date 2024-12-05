@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.models import User
 from django.http import HttpResponse
 from pymongo import MongoClient
 
 client = MongoClient("mongodb://localhost")
 db = client.HW_10
+
 
 def login_view(request):
     if request.method == "POST":

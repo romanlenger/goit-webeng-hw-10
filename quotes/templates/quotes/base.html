@@ -26,7 +26,13 @@
                 {% endif %}
             </p>
         </div>
-
+        <div class="container mt-3">
+            {% if user.is_authenticated %}
+                <a href="{% url 'quotes:add_quote' %}" class="btn btn-success">Add Quote</a>
+            {% else %}
+                <a href="{% url 'users:login' %}?next={% url 'quotes:add_quote' %}" class="btn btn-primary">Add Quote</a>
+            {% endif %}
+        </div>
 
     {% block content %} {% endblock %}
 
